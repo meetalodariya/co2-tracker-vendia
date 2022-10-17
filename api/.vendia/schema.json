@@ -1,0 +1,238 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://vendia.net/schemas/demos/carbon-emissions-template.json",
+  "title": "CO2 Emissions",
+  "description": "Track the carbon emissions from multiple suppliers through different transportation methods.",
+  "x-vendia-acls": {
+    "MotorAcl": {
+      "type": "Motor"
+    },
+    "Battery": {
+      "type": "Battery"
+    },
+    "Transportation": {
+      "type": "Transportation"
+    },
+    "HornetPowerTools": {
+      "type": "HornetPowerTools"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Motor": {
+      "description": "Motor information",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "partNumber": {
+            "description": "Part Number",
+            "type": "string"
+          },
+          "serialNumber": {
+            "description": "Serial number for part",
+            "type": "string"
+          },
+          "imageURL": {
+            "description": "Image URL of tool",
+            "type": "string"
+          },
+          "co2": {
+            "description": "CO2 data of a component",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "year": {
+                  "type": "string",
+                  "description": "year of measurement"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Total amount of Co2 emitted by motor"
+                }
+              }
+            }
+          },
+          "dateManufactured": {
+            "description": "Date part was manufactured",
+            "type": "string",
+            "format": "date"
+          },
+          "costManufactured": {
+            "description": "Cost of manufacturing part",
+            "type": "number"
+          },
+          "salesPrice": {
+            "description": "Sales price of part",
+            "type": "number"
+          }
+        }
+      }
+    },
+    "Battery": {
+      "description": "Battery information",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "partNumber": {
+            "description": "Part Number",
+            "type": "string"
+          },
+          "serialNumber": {
+            "description": "Serial number for part",
+            "type": "string"
+          },
+          "imageURL": {
+            "description": "Image URL of tool",
+            "type": "string"
+          },
+          "co2": {
+            "description": "CO2 data of a component",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "year": {
+                  "type": "string",
+                  "description": "year of measurement"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "Total amount of Co2 emitted by battery"
+                }
+              }
+            }
+          },
+          "dateManufactured": {
+            "description": "Date part was manufactured",
+            "type": "string",
+            "format": "date"
+          },
+          "costManufactured": {
+            "description": "Cost of manufacturing part",
+            "type": "number"
+          },
+          "salesPrice": {
+            "description": "Sales price of part",
+            "type": "number"
+          }
+        }
+      }
+    },
+    "Transportation": {
+      "description": "Transport information",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "transportationMethod": {
+            "type": "string",
+            "enum": [
+              "ground",
+              "ship"
+            ]
+          },
+          "trackingId": {
+            "description": "Vehicle id, whether it be a truck or ship, etc...",
+            "type": "string"
+          },
+          "vehicleId": {
+            "description": "Vehicle id, whether it be a truck or ship, etc...",
+            "type": "string"
+          },
+          "shipmentId": {
+            "description": "Shipment id",
+            "type": "string"
+          },
+          "imageURL": {
+            "description": "Image URL of transport",
+            "type": "string"
+          },
+          "co2": {
+            "description": "Carbon output for transportation (type * distance)",
+            "type": "number"
+          },
+          "dateShipped": {
+            "description": "Date part was shipped",
+            "type": "string",
+            "format": "date"
+          },
+          "dateArrived": {
+            "description": "Date part arrived",
+            "type": "string",
+            "format": "date"
+          },
+          "bill": {
+            "description": "Bill to customer",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "HornetPowerTools": {
+      "description": "Hornet power tools info",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "toolType": {
+            "description": "Type of tool",
+            "type": "string"
+          },
+          "serialNumber": {
+            "description": "Serial number of tool",
+            "type": "string"
+          },
+          "imageURL": {
+            "description": "Image URL of tool",
+            "type": "string"
+          },
+          "components": {
+            "description": "List of components used in assembling the HPT",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "Type of the component"
+                },
+                "serialNumber": {
+                  "type": "string",
+                  "description": "Serial number of the component"
+                },
+                "co2": {
+                  "description": "Total amount of Co2 emitted by component (in kgCo2)",
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "transport": {
+            "description": "Transport details of a tool",
+            "type": "object",
+            "properties": {
+              "transportationMethod": {
+                "type": "string",
+                "enum": [
+                  "ground",
+                  "ship"
+                ]
+              },
+              "trackingId": {
+                "type": "string",
+                "description": "Tracking ID of the transport used"
+              },
+              "co2": {
+                "description": "Carbon output for transportation (type * distance)",
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
