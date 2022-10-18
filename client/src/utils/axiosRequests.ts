@@ -6,7 +6,7 @@ interface Response<T> {
   error?: AxiosError;
 }
 
-const BASE_URL = process.env.API_HOST || 'http://localhost:8001';
+const BASE_URL = 'http://localhost:8001';
 
 export const httpGet = async <T>({
   url,
