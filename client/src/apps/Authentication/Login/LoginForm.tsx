@@ -37,7 +37,7 @@ export const LoginForm = () => {
 
       if (data) {
         auth.signin({ token: data.token }, () => {
-          navigate('/');
+          navigate('/dashboard');
         });
       } else if (error) {
         setError('Server error: ' + error.message);
