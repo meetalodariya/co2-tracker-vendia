@@ -1,5 +1,6 @@
 import { VendiaClient } from '@vendia/client';
 import { Request, Response, NextFunction } from 'express';
+import HttpError from '../exceptions/http-error';
 
 export const getHptBySerialNumber = async (
   req: Request,
@@ -18,13 +19,17 @@ export const getHptBySerialNumber = async (
       },
     });
 
-    const hptRecord = hptList.items[0];
+    const hptRecord = hptList?.items[0];
 
-    if(hptRecord._id){
+    if (!hptRecord) {
+      throw new HttpError("record not found", 404);
+    }
+
+    if (hptRecord._id) {
       delete hptRecord._id;
     }
 
-    if(hptRecord._owner){
+    if (hptRecord._owner) {
       delete hptRecord._owner;
     }
 

@@ -37,7 +37,7 @@ export const LoginForm = () => {
 
       if (data) {
         auth.signin({ token: data.token }, () => {
-          navigate('/dashboard');
+          navigate('/');
         });
       } else if (error) {
         setError('Server error: ' + error.message);
@@ -61,22 +61,23 @@ export const LoginForm = () => {
         style={{
           backgroundColor: 'white',
           padding: '20px',
-          width: '300px',
+          width: '400px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           gap: '30px',
         }}
       >
-        <div style={{ fontWeight: '800', fontSize: '1.8rem' }}>Login</div>
+        <div style={{ fontWeight: '800', fontSize: '1.8rem' }}>Sign In</div>
         <form onSubmit={handleSubmit}>
           <TextField
             value={credentials.username}
             onChange={handleInputChange}
             name='username'
             label='Username'
-            variant='standard'
+            variant='outlined'
             fullWidth
+            color='primary'
             style={{ marginBottom: '10px' }}
           />
           <TextField
@@ -84,7 +85,8 @@ export const LoginForm = () => {
             onChange={handleInputChange}
             name='password'
             label='Password'
-            variant='standard'
+            color='primary'
+            variant='outlined'
             type={'password'}
             fullWidth
           />
@@ -92,7 +94,12 @@ export const LoginForm = () => {
             {error && <Alert severity='error'>{error}</Alert>}
           </div>
           <div className={styles['action-container']}>
-            <Button color='secondary' variant='contained' type='submit'>
+            <Button
+              fullWidth
+              color='secondary'
+              variant='contained'
+              type='submit'
+            >
               Sign in
             </Button>
           </div>
