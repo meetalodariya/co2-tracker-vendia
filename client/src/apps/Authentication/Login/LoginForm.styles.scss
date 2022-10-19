@@ -1,9 +1,13 @@
 .action-container {
   display: flex;
-  -moz-flex-wrap: wrap;
-  flex-wrap: wrap;
+  // -moz-flex-wrap: wrap;
+  // flex-wrap: wrap;
   width: 100%;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 45px;
+  padding : 10px 10px 10px 10px;
+  align-items : center;
 }
+
+

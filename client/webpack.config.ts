@@ -38,6 +38,17 @@ const webpackConfig = (env: {
           transpileOnly: true,
         },
       },
+      // {
+      //   test : /\.jsx?$/,
+      //   loader : 'babel-loader',
+      //   exclude : /node_modules/,
+      // },
+      {
+        test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"
+       },
+      { test: /\\.(png|jpg|svg|gif)$/, 
+        include: path.resolve(__dirname, './src/assets/images'),
+        use: ['file-loader'] },
       {
         test: /\.svg$/,
         include: path.resolve(__dirname, './src/assets/icons'),
