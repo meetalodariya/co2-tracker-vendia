@@ -7,7 +7,10 @@
     "start:dev": "webpack-cli serve --mode=development --env development --open --hot",
     "build": "webpack --config=webpack.config.ts --mode=production --env production --progress",
     "lint": "eslint './src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
+    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
+    "test:e2e:open": "cypress open --e2e",
+    "test:e2e:run": "cypress run --browser chrome"
+
   },
   "repository": {
     "type": "git",
@@ -17,6 +20,7 @@
   "license": "ISC",
   "devDependencies": {
     "@svgr/webpack": "^6.2.1",
+    "@types/jest": "^29.2.0",
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
@@ -27,6 +31,7 @@
     "@typescript-eslint/parser": "^5.14.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.1",
+    "cypress": "^10.10.0",
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",

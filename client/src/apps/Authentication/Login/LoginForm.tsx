@@ -71,6 +71,7 @@ export const LoginForm = () => {
         <div style={{ fontWeight: '800', fontSize: '1.8rem' }}>Sign In</div>
         <form onSubmit={handleSubmit}>
           <TextField
+            data-testid={'username-textfield'}
             value={credentials.username}
             onChange={handleInputChange}
             name='username'
@@ -81,6 +82,7 @@ export const LoginForm = () => {
             style={{ marginBottom: '10px' }}
           />
           <TextField
+            data-testid={'password-textfield'}
             value={credentials.password}
             onChange={handleInputChange}
             name='password'
@@ -91,7 +93,11 @@ export const LoginForm = () => {
             fullWidth
           />
           <div style={{ marginTop: '10px' }}>
-            {error && <Alert severity='error'>{error}</Alert>}
+            {error && (
+              <Alert data-testid={'error-message'} severity='error'>
+                {error}
+              </Alert>
+            )}
           </div>
           <div className={styles['action-container']}>
             <Button
@@ -99,6 +105,7 @@ export const LoginForm = () => {
               color='secondary'
               variant='contained'
               type='submit'
+              data-testid={'submit-button'}
             >
               Sign in
             </Button>

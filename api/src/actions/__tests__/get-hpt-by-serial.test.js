@@ -1,7 +1,6 @@
 const { default: HttpError } = require('../../exceptions/http-error');
 const { getHptBySerialNumber } = require('../get-hpt-by-serial');
 
-
 const vendiaHPTResponse = {
   items: [
     {
@@ -58,7 +57,7 @@ describe('Get HPT By Serial Number controller', () => {
       json: resJsonMock,
     };
 
-    const result = await getHptBySerialNumber(req, res, () => undefined);
+    await getHptBySerialNumber(req, res, () => undefined);
 
     expect(listHornetPowerToolsMock.mock.calls[0][0]).toStrictEqual({
       filter: {

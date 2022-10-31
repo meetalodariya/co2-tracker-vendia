@@ -42,7 +42,7 @@ const HptCard: FC<Props> = ({ data }) => {
   };
 
   return (
-    <Card sx={{ width: 345 }}>
+    <Card sx={{ width: 345 }} data-testid='hpt-details-card'>
       <CardHeader
         title={`SN# ${serialNumber}`}
         subheader={'September 14, 2016'}
@@ -55,7 +55,7 @@ const HptCard: FC<Props> = ({ data }) => {
         height='194px'
         width='100%'
         src={imageURL}
-        alt='Paella dish'
+        alt={toolType}
         onLoad={() => setIsImageLoaded(true)}
       />
       <CardContent>
@@ -76,6 +76,7 @@ const HptCard: FC<Props> = ({ data }) => {
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label='show more'
+            data-testid='card-expand-more'
           >
             <ExpandMoreIcon />
           </ExpandMore>

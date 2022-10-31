@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
-import { useAuth } from 'src/providers/auth';
+import { useAuth } from '../../providers/auth';
 
 export default function AccountMenu() {
   const { signout } = useAuth();
@@ -33,6 +33,7 @@ export default function AccountMenu() {
             aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup='true'
             aria-expanded={open ? 'true' : undefined}
+            data-testid='account-profile'
           >
             <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
           </IconButton>
@@ -83,7 +84,10 @@ export default function AccountMenu() {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={() => signout(null)}>
+        <MenuItem
+          onClick={() => signout(null)}
+          data-testid={'nav-logout-button'}
+        >
           <ListItemIcon>
             <Logout fontSize='small' />
           </ListItemIcon>

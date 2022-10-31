@@ -26,17 +26,15 @@ const Item = styled(Paper)(({ theme }) => ({
 const Dashboard = () => {
   const auth = useAuth();
   const [htpSn, setHptSn] = useState<string>('');
-  const [error, setError] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [result, setResult] = useState<{
-    hptDetails: HPTDetails;
+    hptDetails: HPTDetails | null;
     status: string;
   } | null>(null);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
-      //  32hvaso2';
       setResult(null);
       setIsLoading(true);
 
@@ -50,9 +48,9 @@ const Dashboard = () => {
       if (data) {
         setResult({ hptDetails: data, status: 'Success' });
       } else if (error) {
-        if (error.response.status === 401) {
-          auth.signout(null);
-        } else if (error.response.status === 404) {
+        if (error?.response?.status === 401) {
+          auth.signout(() => undefined);
+        } else if (error?.response?.status === 404) {
           setResult({ hptDetails: null, status: 'Not Found' });
         }
       }
@@ -65,11 +63,30 @@ const Dashboard = () => {
   return (
     <>
       <Nav />
+      <div
+        style={{
+          backgroundImage:
+            "url('https://www.oxygenna.com/wp-content/uploads/2014/08/tools-blog.jpg')",
+          filter: 'blur(4px)',
+          WebkitFilter: 'blur(4px)',
+          height: '100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          minHeight: '100vh',
+          zIndex: 1,
+          position: 'fixed',
+          left: 0,
+          right: 0,
+          display: 'block',
+        }}
+      ></div>
       <Grid
         container
-        rowSpacing={17}
+        rowSpacing={13}
         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-        sx={{ marginTop: '8px' }}
+        sx={{ marginTop: '8px', position: 'absolute', zIndex: 999 }}
+        data-testid={'dashboard-container'}
       >
         <Grid item xs={12}>
           <form onSubmit={handleSubmit}>
@@ -83,14 +100,16 @@ const Dashboard = () => {
               <TextField
                 required
                 id='standard'
+                data-testid='hpt-sn-input'
                 variant='filled'
                 label='Enter HPT Serial Number'
                 value={htpSn}
                 onChange={(e) => setHptSn(e.target.value)}
                 sx={{
                   width: '30vw',
+                  backgroundColor: 'white',
                 }}
-                color='secondary'
+                color='primary'
                 InputProps={{
                   endAdornment: (
                     <IconButton type='submit'>

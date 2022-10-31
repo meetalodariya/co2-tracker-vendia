@@ -17,8 +17,9 @@
     "paths": {
       "@utils/*": ["src/utils/*"],
       "@core/*": ["src/core/*"],
-      "@assets/*": ["src/assets/*"],
-    }
+      "@assets/*": ["src/assets/*"]
+    },
+    "types": ["cypress", "node"]
   },
-  "include": ["./src", "./webpack.config.ts", "./src/declaration.d.ts"]
+  "include": ["**/*.ts"]
 }

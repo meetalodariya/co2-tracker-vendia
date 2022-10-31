@@ -25,6 +25,7 @@ const Login = () => {
         }}
       ></div>
       <Grid
+        data-testid={'login-container'}
         container
         spacing={0}
         direction='column'
