@@ -3,36 +3,40 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import AccountMenu from './AccountMenu';
+import HomeRepairService from '@mui/icons-material/HomeRepairService';
 
 const Nav = () => {
   return (
-    <AppBar position='static'>
-      <Container maxWidth='xl'>
-        <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
+    <AppBar
+      position='fixed'
+      sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+    >
+      <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+          <HomeRepairService fontSize='medium' />
           <Typography
-            variant='h6'
+            variant='h5'
             noWrap
             component='a'
             href='/'
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              fontFamily: "'Fasthand', cursive",
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: '.1rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            HORNET POWER TOOLS
+            Hornet Power Tools
           </Typography>
-          <Box>
-            <AccountMenu />
-          </Box>
-        </Toolbar>
-      </Container>
+        </div>
+        <Box>
+          <AccountMenu />
+        </Box>
+      </Toolbar>
     </AppBar>
   );
 };

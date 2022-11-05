@@ -2,7 +2,7 @@ import { VendiaClient } from '@vendia/client';
 import { Request, Response, NextFunction } from 'express';
 import HttpError from '../exceptions/http-error';
 
-export const getHptBySerialNumber = async (
+export const getHptBySerialNumberController = async (
   req: Request,
   res: Response,
   next: NextFunction,

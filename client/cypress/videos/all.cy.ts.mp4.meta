@@ -1,0 +1,36 @@
+;FFMETADATA1
+[CHAPTER]
+TIMEBASE=1/1000
+START=-69
+END=2261
+title=Dashboard landing page renders the login page
+[CHAPTER]
+TIMEBASE=1/1000
+START=3568
+END=4595
+title=Dashboard landing page renders the results after fetching data from backend
+[CHAPTER]
+TIMEBASE=1/1000
+START=5103
+END=5624
+title=Dashboard landing page renders the error message when no results are found
+[CHAPTER]
+TIMEBASE=1/1000
+START=5246
+END=6147
+title=login page renders the login page
+[CHAPTER]
+TIMEBASE=1/1000
+START=6778
+END=7049
+title=login page should display error message if inputs are empty
+[CHAPTER]
+TIMEBASE=1/1000
+START=6370
+END=7322
+title=login page should redirect to dashboard landing page upon successful login
+[CHAPTER]
+TIMEBASE=1/1000
+START=7684
+END=8276
+title=Navbar should log the user out after clicking on logout

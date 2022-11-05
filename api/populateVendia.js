@@ -3,13 +3,13 @@ const { createVendiaClient } = require('@vendia/client');
 const client = createVendiaClient({
   apiUrl:
     process.env.VENDIA_GRAPHQL_URL ||
-    'https://4up3f6n7i4.execute-api.us-west-2.amazonaws.com/graphql',
+    'https://n451yj2jzd.execute-api.us-west-2.amazonaws.com/graphql/',
   websocketUrl:
     process.env.VENDIA_GRAPHQL_WEBSOCKET_URL ||
-    'wss://1j07jg5k8k.execute-api.us-west-2.amazonaws.com/graphql',
+    'wss://wekb6e4le8.execute-api.us-west-2.amazonaws.com/graphql',
   apiKey:
     process.env.VENDIA_API_KEY ||
-    'A6wEjAzKprLonR797yA8P2DgNW6Do2xMgY6BSfSdnGSU',
+    '89oRTs26Hky1YuB2AetpBaE8XZ2Ghh1bA1fQKCsCctVs',
 });
 
 const motor = {

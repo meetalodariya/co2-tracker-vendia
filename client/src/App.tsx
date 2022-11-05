@@ -1,23 +1,39 @@
 import React from 'react';
 import { ThemeProvider } from '@mui/material';
 import { Route, Routes, useLocation, Navigate, Outlet } from 'react-router-dom';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 
 import { AuthProvider, useAuth } from './providers/auth';
 import theme from './theme';
 import { Login } from './apps/Authentication';
-import Dashboard from './components/Dashboard/Dashboard';
+import Authenticated from './layouts/Authenticated';
+import Dashboard from './apps/Dashboard/Dashboard';
+import Battery from './apps/Battery';
+import Motor from './apps/Motor';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <AuthProvider>
-        <Routes>
-          <Route path='/login' element={<Login />} />
-          <Route element={<RequireAuth />}>
-            <Route path='/' element={<Dashboard />} />
-          </Route>
-        </Routes>
-      </AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            <Route element={<RequireAuth />}>
+              <Route element={<Authenticated />}>
+                <Route path='/' element={<Dashboard />} />
+                <Route path='/components/battery' element={<Battery />} />
+                <Route path='/components/motor' element={<Motor />} />
+
+              </Route>
+            </Route>
+          </Routes>
+        </AuthProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 };
