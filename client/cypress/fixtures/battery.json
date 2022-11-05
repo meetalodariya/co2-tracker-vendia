@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "01842c0a-f050-341b-99ac-87aed50c411e",
+    "_owner": "node-1",
+    "partNumber": "test-data",
+    "serialNumber": "ogcmYbNn",
+    "imageURL": "https://cdn.shopify.com/s/files/1/1550/6951/products/dc9096_11ccc41c-3574-4b51-bd81-14a64c401d5b_600x.jpg?v=1561053467",
+    "co2": [
+      { "year": "2015", "value": "1400" },
+      { "year": "2016", "value": "1100" },
+      { "year": "2017", "value": "900" }
+    ],
+    "dateManufactured": "2022-09-13",
+    "costManufactured": 200,
+    "salesPrice": 208
+  },
+  {
+    "_id": "0184321a-e929-f635-1f87-b50ffe01428f",
+    "_owner": "node-1",
+    "partNumber": "part-289",
+    "serialNumber": "f34f",
+    "imageURL": "https://www.aaa.com/AAA/common/AAR/images/battery-check-thumb.png",
+    "co2": null,
+    "dateManufactured": "2022-10-10",
+    "costManufactured": 324,
+    "salesPrice": 42341
+  },
+  {
+    "_id": "01843467-a382-5898-9e82-64e040d876c1",
+    "_owner": "node-1",
+    "partNumber": "234jmasodifm",
+    "serialNumber": "BTR-234",
+    "imageURL": "https://www.batteriesplus.com/globalassets/card-blocks/images/products-400x400/x2power-auto-battery.jpg",
+    "co2": [],
+    "dateManufactured": "2022-10-11",
+    "costManufactured": null,
+    "salesPrice": 18
+  },
+  {
+    "_id": "0184346d-572e-6df2-35bb-2d96c353dc11",
+    "_owner": "node-1",
+    "partNumber": "234mk",
+    "serialNumber": "Jslm",
+    "imageURL": "https://cdn.shopify.com/s/files/1/2702/9014/products/P1000131_2232_480x480.jpg?v=1662660867",
+    "co2": [],
+    "dateManufactured": "2022-11-07",
+    "costManufactured": null,
+    "salesPrice": 7
+  }
+]

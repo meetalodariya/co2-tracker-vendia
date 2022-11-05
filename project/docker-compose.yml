@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  client:
+    build:
+      context: ../client
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
+  api:
+    build:
+      context: ../api
+    ports:
+      - "8001:8001"  
+    env_file: 
+      - ./api.env

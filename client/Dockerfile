@@ -1,16 +1,14 @@
-FROM node:16.14.0-alpine as base
-
+FROM node:18-alpine as builder
 WORKDIR /app
-
-ARG ENV
-
-ENV NODE_ENV=production
-
-COPY package.json .
-COPY package-lock.json .
-
+COPY ./package.json .
 RUN npm install
-
 COPY . .
 
+ARG API_HOST
+ENV API_HOST $API_HOST
+
 RUN npm run build
+
+FROM nginx:latest
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
