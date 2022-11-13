@@ -14,6 +14,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Battery } from './types';
 import { useAuth } from '../../providers/auth';
 
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
+import Co2TableRows from './Co2TableRows';
+import IconButton from '@mui/material/IconButton';
+
 interface Props {
   open: boolean;
   handleClose: () => void;
@@ -25,6 +30,7 @@ const AddDialogue: FC<Props> = ({ open, handleClose }) => {
     serialNumber: '',
     partNumber: '',
     imageURL: '',
+    co2:[{year:'',value:''}],
     dateManufactured: new Date().toISOString().split('T')[0],
     salesPrice: '',
   });
@@ -52,6 +58,7 @@ const AddDialogue: FC<Props> = ({ open, handleClose }) => {
       serialNumber: '',
       partNumber: '',
       imageURL: '',
+      co2:[{year:'',value:''}],
       dateManufactured: new Date().toISOString().split('T')[0],
       salesPrice: '',
     });
@@ -63,6 +70,45 @@ const AddDialogue: FC<Props> = ({ open, handleClose }) => {
       [name]: value,
     });
   };
+
+
+  const addCo2TableRows = ()=>{
+    const rowsInput={
+      value:'',
+      year:'',
+    } ;
+    const test = [...formData.co2];
+    test.push(rowsInput);
+    setFormData({
+      ...formData, 
+      ["co2"]: test,
+    });
+  }
+
+
+
+const deleteTableRows = (index)=>{
+  debugger;
+  const rows = [...formData.co2];
+  rows.splice(index, 1);
+  setFormData({
+    ...formData, 
+    ["co2"]: rows,
+  });
+}
+
+
+
+const handleCo2Change = (index,event)=>{
+const { name, value } = event.target;
+const rowsInput = [...formData.co2];
+rowsInput[index][name] = value;
+setFormData({
+  ...formData, 
+  ["co2"]: rowsInput,
+});
+}
+
 
   return (
     <>
@@ -154,6 +200,33 @@ const AddDialogue: FC<Props> = ({ open, handleClose }) => {
               />
             </LocalizationProvider>
           </div>
+          <div className="row">
+            <div className="col-sm-8">
+                <table className="table">
+                    <thead>
+                      <tr>
+                          <th>Year</th>
+                          <th>Value</th>
+                          <th>
+                            {/* <button className="btn btn-outline-success" onClick={addCo2TableRows} >+</button> */}
+                            {/* <IconButton onClick={()=>(deleteTableRows(index))} data-testid={'edit-battery-button'}>
+                                <DeleteIcon />
+                            </IconButton>
+                            <Button variant="outlined" onClick={addCo2TableRows} startIcon={<AddIcon />}>
+                                Add
+                            </Button> */}
+                            </th>
+                      </tr>
+                    </thead>
+                  <tbody>
+                  <Co2TableRows rowsData={formData.co2} deleteTableRows={(i)=>deleteTableRows(i)} handleCo2Change={(i,e)=>handleCo2Change(i,e)} />
+                  </tbody> 
+                  <IconButton onClick={addCo2TableRows} data-testid={'add-battery-button'}>
+                      <AddIcon />
+                   </IconButton>
+                </table>
+              </div>
+        </div>
         </DialogContent>
         <DialogActions>
           <Button color='warning' onClick={handleClose}>

@@ -11,11 +11,18 @@ import IconButton from '@mui/material/IconButton';
 import UpdateDialogue from './UpdateDialogue';
 import { Battery } from './types';
 import { CircularProgress } from '@mui/material';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import Visualize from './Visualize';
 
 function Row({ row }) {
   const [open, setOpen] = React.useState<boolean>(false);
+  const [visOpen, setVisOpen] = React.useState<boolean>(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleVisOpen = () => setVisOpen(true);
+  const handleVisClose = () => setVisOpen(false);
 
   return (
     <>
@@ -47,8 +54,14 @@ function Row({ row }) {
             <EditIcon />
           </IconButton>
         </TableCell>
+        <TableCell align='center'>
+          <IconButton onClick={handleVisOpen}>
+            <ShowChartIcon />
+          </IconButton>
+        </TableCell>
       </TableRow>
       <UpdateDialogue open={open} handleClose={handleClose} row={row} />
+      <Visualize open={visOpen} handleClose={handleVisClose} co2data={row?.co2}/>
     </>
   );
 }
@@ -86,6 +99,9 @@ const CollapsibleTable: React.FC<Props> = ({ data, isLoading }) => {
             </TableCell>
             <TableCell align='center'>
               <strong>Actions</strong>
+            </TableCell>
+            <TableCell align='center'>
+              <strong>Charts</strong>
             </TableCell>
           </TableRow>
         </TableHead>

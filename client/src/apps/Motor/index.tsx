@@ -7,12 +7,18 @@ import CollapsibleTable from './DataGrid';
 import { Motor } from './types';
 import { useAuth } from '../../providers/auth';
 import AddDialogue from './AddDialogue';
+import Visualize from './Visualize';
+// import {Chart as ChartJS } from "chart.js/auto";
 
 const Motor = () => {
   const { user } = useAuth();
   const [open, setOpen] = React.useState<boolean>(false);
+  // const [visOpen, setVisOpen] = React.useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  // const handleVisOpen = () => setVisOpen(true);
+  // const handleVisClose = () => setVisOpen(false);
 
   const { data, error, isLoading } = useQuery('getAllMotors', () => {
     return httpGet<{ data: Array<Motor>; status: number }>({
