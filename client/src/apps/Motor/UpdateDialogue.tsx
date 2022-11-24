@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useQueryClient, useMutation } from 'react-query';
 import axios from 'axios';
 
@@ -14,13 +14,6 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { Motor } from './types';
 import { useAuth } from '../../providers/auth';
 
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -32,20 +25,10 @@ interface Props {
   row: Motor;
 }
 
-
-
 const UpdateDialogue: FC<Props> = ({ open, handleClose, row }) => {
   const { user } = useAuth();
-  // const [formData, setFormData] = useState({
-  //   serialNumber: '',
-  //   partNumber: '',
-  //   imageURL: '',
-  //   co2:[{year:'',value:''}],
-  //   dateManufactured: new Date().toLocaleDateString(),
-  //   salesPrice: '',
-  // });
-  // setFormData(row);
-  const [formData, setFormData] = useState(row);
+  const [formData, setFormData] = useState<Partial<Motor>>(row);
+
   const queryClient = useQueryClient();
   const mutation = useMutation(
     (data: Partial<Motor>) =>
@@ -68,7 +51,7 @@ const UpdateDialogue: FC<Props> = ({ open, handleClose, row }) => {
       serialNumber: '',
       partNumber: '',
       imageURL: '',
-      co2 : [{year:"",value:''}],
+      co2: [{ year: '', value: '' }],
       dateManufactured: new Date().toISOString().split('T')[0],
       salesPrice: '',
     });
@@ -80,44 +63,55 @@ const UpdateDialogue: FC<Props> = ({ open, handleClose, row }) => {
       [name]: value,
     });
   };
-  
-  const addCo2TableRows = ()=>{
-            const rowsInput={
-              value:'e',
-              year:'e',
-            } ;
-            const test = [...formData.co2];
-            test.push(rowsInput);
-            setFormData({
-              ...formData, 
-              ["co2"]: test,
-            });
-  }
 
+  const addCo2TableRows = () => {
+    if (formData.co2?.length) {
+      const lastRow = formData.co2[formData.co2.length - 1];
+      if (!(lastRow.value && lastRow.year)) {
+        return;
+      }
 
+      const rowsInput = {
+        value: '',
+        year: '',
+      };
+      const test = [...formData.co2];
+      test.push(rowsInput);
+      setFormData({
+        ...formData,
+        ['co2']: test,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        ['co2']: [
+          {
+            value: '',
+            year: '',
+          },
+        ],
+      });
+    }
+  };
 
-  const deleteTableRows = (index)=>{
-            const rows = [...formData.co2];
-            rows.splice(index, 1);
-            setFormData({
-              ...formData, 
-              ["co2"]: rows,
-            });
-  }
+  const deleteTableRows = (index) => {
+    const rows = [...formData.co2];
+    rows.splice(index, 1);
+    setFormData({
+      ...formData,
+      ['co2']: rows,
+    });
+  };
 
-
-
-   const handleCo2Change = (index,event)=>{
-          const { name, value } = event.target;
-          const rowsInput = [...formData.co2];
-          rowsInput[index][name] = value;
-          setFormData({
-            ...formData, 
-            ["co2"]: rowsInput,
-          });
-  }
-
-
+  const handleCo2Change = (index, event) => {
+    const { name, value } = event.target;
+    const rowsInput = [...formData.co2];
+    rowsInput[index][name] = value;
+    setFormData({
+      ...formData,
+      ['co2']: rowsInput,
+    });
+  };
 
   return (
     <>
@@ -164,8 +158,7 @@ const UpdateDialogue: FC<Props> = ({ open, handleClose, row }) => {
             }
             style={{ margin: '10px', marginBottom: '14px' }}
           />
-          
-          
+
           <div style={{ margin: '10px' }}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DesktopDatePicker
@@ -185,26 +178,30 @@ const UpdateDialogue: FC<Props> = ({ open, handleClose, row }) => {
             </LocalizationProvider>
           </div>
 
-          <div className="row">
-            <div className="col-sm-8">
-                <table className="table">
-                    <thead>
-                      <tr>
-                          <th>Year</th>
-                          <th>Value</th>
-                      </tr>
-                    </thead>
-                  <tbody>
-                  <Co2TableRows rowsData={row.co2} deleteTableRows={(i)=>deleteTableRows(i)} handleCo2Change={(i,e)=>handleCo2Change(i,e)} />
-                  </tbody> 
-                  <IconButton onClick={addCo2TableRows} data-testid={'add-battery-button'}>
-                      <AddIcon />
-                   </IconButton>
-                </table>
-              </div>
-
-          </div>
-          
+          <table
+            className='table'
+            style={{ borderSpacing: '8px', borderCollapse: 'separate' }}
+          >
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>CO2 Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <Co2TableRows
+                rowsData={formData.co2}
+                deleteTableRows={(i) => deleteTableRows(i)}
+                handleCo2Change={(i, e) => handleCo2Change(i, e)}
+              />
+            </tbody>
+            <IconButton
+              onClick={addCo2TableRows}
+              data-testid={'add-battery-button'}
+            >
+              <AddIcon />
+            </IconButton>
+          </table>
         </DialogContent>
         <DialogActions>
           <Button color='warning' onClick={handleClose}>
