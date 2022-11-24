@@ -9,7 +9,7 @@ const client = createVendiaClient({
     'wss://wekb6e4le8.execute-api.us-west-2.amazonaws.com/graphql',
   apiKey:
     process.env.VENDIA_API_KEY ||
-    '89oRTs26Hky1YuB2AetpBaE8XZ2Ghh1bA1fQKCsCctVs',
+    'Df4fqqPVeAPAwmB7uN2XEZW2BAgBniT5h9JthKEWBwfT',
 });
 
 const motor = {
@@ -94,12 +94,12 @@ const drillHPT = {
     {
       type: 'motor',
       serialNumber: 'PMcQLNWf',
-      co2: 1500
+      co2: 1500,
     },
     {
       type: 'battery',
       serialNumber: 'ogcmYbNn',
-      co2: 900
+      co2: 900,
     },
   ],
   transport: {
@@ -114,7 +114,6 @@ async function populateVendia() {
     const { entities } = client;
 
     await entities.battery.add(battery);
-
     await entities.motor.add(motor);
     await entities.transportation.add(shipTransport);
     await entities.transportation.add(truckTransport);
@@ -125,8 +124,20 @@ async function populateVendia() {
   }
 }
 
-populateVendia().then(() => {
-    console.log('done!')
-}).catch(e => {
-    console.error("Something went wrong: ", e)
-});
+// async function cleanTransports() {
+//   const { entities } = client;
+
+//   await entities.battery.add(battery);
+//   const transports = await entities.transportation.list();
+//   transports.items.forEach(async (tr) => {
+//     await entities.transportation.remove(tr._id);
+//   });
+// }
+
+populateVendia()
+  .then(() => {
+    console.log('done!');
+  })
+  .catch((e) => {
+    console.error('Something went wrong: ', e);
+  });

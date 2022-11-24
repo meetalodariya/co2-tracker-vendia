@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import UpdateDialogue from './UpdateDialogue';
-import { Battery } from './types';
+import { Motor } from './types';
 import { CircularProgress } from '@mui/material';
 
 function Row({ row }) {
@@ -40,7 +40,9 @@ function Row({ row }) {
             {row.imageURL}
           </span>
         </TableCell>
-        <TableCell align='center'>{new Date(row.dateManufactured).toDateString()}</TableCell>
+        <TableCell align='center'>
+          {new Date(row.dateManufactured).toDateString()}
+        </TableCell>
         <TableCell align='center'>{row.salesPrice}</TableCell>
         <TableCell align='center'>
           <IconButton onClick={handleOpen}>
@@ -54,7 +56,7 @@ function Row({ row }) {
 }
 
 interface Props {
-  data: Array<Battery> | undefined;
+  data: Array<Motor> | undefined;
   isLoading: boolean;
 }
 

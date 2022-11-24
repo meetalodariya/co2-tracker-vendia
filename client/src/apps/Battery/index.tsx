@@ -16,7 +16,7 @@ const Battery = () => {
   const handleClose = () => setOpen(false);
 
   const { data, error, isLoading } = useQuery('getAllBatteries', () => {
-    return httpGet<{ data: Array<Battery>; status: number }>({
+    return httpGet<Array<Battery>>({
       url: '/battery',
       headers: { Authorization: 'Bearer ' + user.token },
     });
@@ -38,9 +38,9 @@ const Battery = () => {
         style={{ marginBottom: '10px' }}
         disabled={isLoading}
         onClick={handleOpen}
-        data-testid="add-battery-button"
+        data-testid='add-battery-button'
       >
-        <AddIcon size='small' /> Add Battery
+        <AddIcon /> Add Battery
       </Button>
       <CollapsibleTable data={data?.data} isLoading={isLoading} />
       <AddDialogue open={open} handleClose={handleClose} />

@@ -15,7 +15,7 @@ const Motor = () => {
   const handleClose = () => setOpen(false);
 
   const { data, error, isLoading } = useQuery('getAllMotors', () => {
-    return httpGet<{ data: Array<Motor>; status: number }>({
+    return httpGet<Array<Motor>>({
       url: '/motor',
       headers: { Authorization: 'Bearer ' + user.token },
     });
@@ -38,7 +38,7 @@ const Motor = () => {
         disabled={isLoading}
         onClick={handleOpen}
       >
-        <AddIcon size='small' /> Add Motor
+        <AddIcon /> Add Motor
       </Button>
       <CollapsibleTable data={data?.data} isLoading={isLoading} />
       <AddDialogue open={open} handleClose={handleClose} />

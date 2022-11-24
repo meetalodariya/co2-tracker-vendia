@@ -1,0 +1,115 @@
+[
+  {
+    "_origin": {
+      "name": "Embarcadero, San Francisco, US",
+      "lat": 37.772,
+      "lng": -122.214
+    },
+    "_destination": {
+      "name": "Brisbane Port, Australia",
+      "lat": -27.467,
+      "lng": 153.027
+    },
+    "strokeColor": "#FF0000",
+    "strokeOpacity": 0.8,
+    "strokeWeight": 2,
+    "fillColor": "#FF0000",
+    "fillOpacity": 0.35,
+    "clickable": false,
+    "draggable": false,
+    "editable": false,
+    "visible": true,
+    "radius": 30000,
+    "zIndex": 100,
+    "paths": [
+      { "lat": 37.772, "lng": -122.214 },
+      { "lat": 21.291, "lng": -157.821 },
+      { "lat": -18.142, "lng": 178.431 },
+      { "lat": -27.467, "lng": 153.027 }
+    ],
+    "_distance": 11768466.2,
+    "_duration": 752091
+  },
+  {
+    "_origin": { "name": "Florida, US", "lat": 26.7153, "lng": -80.0534 },
+    "_destination": {
+      "name": "Southport, North Carolina",
+      "lat": 33.914584,
+      "lng": -78.020557
+    },
+    "strokeColor": "#000",
+    "strokeOpacity": 0.8,
+    "strokeWeight": 2,
+    "fillColor": "#000",
+    "zIndex": 100,
+
+    "fillOpacity": 0.35,
+    "clickable": false,
+    "draggable": false,
+    "editable": false,
+    "visible": true,
+    "radius": 30000,
+    "paths": [
+      { "lat": 26.7153, "lng": -80.0534 },
+      { "lat": 33.914584, "lng": -78.020557 }
+    ],
+    "_distance": 824824.07,
+    "_duration": 52663
+  },
+  {
+    "_origin": {
+      "name": "Port of Tacoma, US",
+      "lat": 47.2655,
+      "lng": -122.4123
+    },
+    "_destination": {
+      "name": "Yokohama Port, Japan",
+      "lat": 35.4498,
+      "lng": 139.6649
+    },
+    "zIndex": 100,
+
+    "strokeColor": "#FFA500",
+    "strokeOpacity": 0.8,
+    "strokeWeight": 2,
+    "fillColor": "#FFA500",
+    "fillOpacity": 0.35,
+    "clickable": false,
+    "draggable": false,
+    "editable": false,
+    "visible": true,
+    "radius": 30000,
+    "paths": [
+      { "lat": 47.2655, "lng": -122.4123 },
+      { "lat": 35.4498, "lng": 139.6649 }
+    ],
+    "_distance": 1943383.12,
+    "_duration": 124148
+  },
+  {
+    "_origin": { "name": "Lisbon, Portugal", "lat": 38.702, "lng": -9.1734 },
+    "_destination": {
+      "name": "New York, US",
+      "lat": 40.532945,
+      "lng": -74.154461
+    },
+    "strokeColor": "#0000FF",
+    "strokeOpacity": 0.8,
+    "strokeWeight": 2,
+    "fillColor": "#0000FF",
+    "fillOpacity": 0.35,
+    "clickable": false,
+    "draggable": false,
+    "zIndex": 100,
+
+    "editable": false,
+    "visible": true,
+    "radius": 30000,
+    "paths": [
+      { "lat": 38.702, "lng": -9.1734 },
+      { "lat": 40.532945, "lng": -74.154461 }
+    ],
+    "_distance": 5416317.35,
+    "_duration": 346170
+  }
+]
