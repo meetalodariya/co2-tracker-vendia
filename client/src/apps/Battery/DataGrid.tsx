@@ -13,6 +13,7 @@ import { Battery } from './types';
 import { CircularProgress } from '@mui/material';
 import ShowChartIcon from '@mui/icons-material/ShowChart';
 import Visualize from './Visualize';
+import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 
 function Row({ row }) {
   const [open, setOpen] = React.useState<boolean>(false);
@@ -47,11 +48,16 @@ function Row({ row }) {
             {row.imageURL}
           </span>
         </TableCell>
-        <TableCell align='center'>{new Date(row.dateManufactured).toDateString()}</TableCell>
+        <TableCell align='center'>
+          {new Date(row.dateManufactured).toDateString()}
+        </TableCell>
         <TableCell align='center'>{row.salesPrice}</TableCell>
         <TableCell align='center'>
           <IconButton onClick={handleOpen} data-testid={'edit-battery-button'}>
             <EditIcon />
+          </IconButton>
+          <IconButton onClick={handleOpen} data-testid={'edit-battery-button'}>
+            <SignalCellularAltIcon />
           </IconButton>
         </TableCell>
         <TableCell align='center'>
@@ -75,7 +81,7 @@ const CollapsibleTable: React.FC<Props> = ({ data, isLoading }) => {
   return (
     <TableContainer
       sx={{ width: '100%', height: '80vh', padding: '18px' }}
-      component={Paper} 
+      component={Paper}
       data-testid={'battery-update-table'}
     >
       <Table aria-label='collapsible table'>

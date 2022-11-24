@@ -44,7 +44,7 @@ const Battery = () => {
         onClick={handleOpen}
         data-testid='add-battery-button'
       >
-        <AddIcon size='small' /> Add Battery
+        <AddIcon /> Add Battery
       </Button>
       <CollapsibleTable data={data?.data} isLoading={isFetching} />
       <AddDialogue open={open} handleClose={handleClose} />

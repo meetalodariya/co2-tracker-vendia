@@ -8,6 +8,7 @@ import { Vendia } from './vendia';
 import hptRoutes from './routes/hpt';
 import authRoutes from './routes/auth';
 import batteryRoutes from './routes/battery';
+import transportRoutes from './routes/transport';
 import motorRoutes from './routes/motor';
 
 
@@ -40,6 +41,7 @@ const server = () => {
   app.use(authRoutes);
   app.use(batteryRoutes);
   app.use(motorRoutes);
+  app.use(transportRoutes);
 
   app.use((error, req, res, next) => {
     console.log(error);

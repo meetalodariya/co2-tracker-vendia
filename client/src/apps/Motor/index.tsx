@@ -42,7 +42,7 @@ const Motor = () => {
         disabled={isFetching}
         onClick={handleOpen}
       >
-        <AddIcon size='small' /> Add Motor
+        <AddIcon /> Add Motor
       </Button>
       <CollapsibleTable data={data?.data} isLoading={isFetching} />
       <AddDialogue open={open} handleClose={handleClose} />

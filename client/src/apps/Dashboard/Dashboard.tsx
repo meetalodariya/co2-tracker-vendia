@@ -54,7 +54,7 @@ const Dashboard = () => {
           justifyContent: 'center',
           display: 'flex',
           minWidth: 'calc(100% - 10px)',
-          gap: '200px'
+          gap: '200px',
         }}
         data-testid={'dashboard-container'}
       >
