@@ -9,13 +9,19 @@ import Paper from '@mui/material/Paper';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import UpdateDialogue from './UpdateDialogue';
-import { Battery } from './types';
+import { Motor } from './types';
 import { CircularProgress } from '@mui/material';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import Visualize from './Visualize';
 
 function Row({ row }) {
   const [open, setOpen] = React.useState<boolean>(false);
+  const [visOpen, setVisOpen] = React.useState<boolean>(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleVisOpen = () => setVisOpen(true);
+  const handleVisClose = () => setVisOpen(false);
 
   return (
     <>
@@ -40,21 +46,33 @@ function Row({ row }) {
             {row.imageURL}
           </span>
         </TableCell>
-        <TableCell align='center'>{new Date(row.dateManufactured).toDateString()}</TableCell>
+        <TableCell align='center'>
+          {new Date(row.dateManufactured).toDateString()}
+        </TableCell>
         <TableCell align='center'>{row.salesPrice}</TableCell>
         <TableCell align='center'>
           <IconButton onClick={handleOpen}>
             <EditIcon />
           </IconButton>
         </TableCell>
+        <TableCell align='center'>
+          <IconButton onClick={handleVisOpen}>
+            <ShowChartIcon />
+          </IconButton>
+        </TableCell>
       </TableRow>
       <UpdateDialogue open={open} handleClose={handleClose} row={row} />
+      <Visualize
+        open={visOpen}
+        handleClose={handleVisClose}
+        co2data={row?.co2}
+      />
     </>
   );
 }
 
 interface Props {
-  data: Array<Battery> | undefined;
+  data: Array<Motor> | undefined;
   isLoading: boolean;
 }
 
@@ -85,6 +103,9 @@ const CollapsibleTable: React.FC<Props> = ({ data, isLoading }) => {
             </TableCell>
             <TableCell align='center'>
               <strong>Actions</strong>
+            </TableCell>
+            <TableCell align='center'>
+              <strong>Charts</strong>
             </TableCell>
           </TableRow>
         </TableHead>

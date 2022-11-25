@@ -15,12 +15,16 @@ const Battery = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { data, error, isLoading } = useQuery('getAllBatteries', () => {
-    return httpGet<{ data: Array<Battery>; status: number }>({
-      url: '/battery',
-      headers: { Authorization: 'Bearer ' + user.token },
-    });
-  });
+  const { data, error, isFetching } = useQuery(
+    'getAllBatteries',
+    () => {
+      return httpGet<Array<Battery>>({
+        url: '/battery',
+        headers: { Authorization: 'Bearer ' + user.token },
+      });
+    },
+    { refetchOnWindowFocus: false },
+  );
 
   return (
     <div
@@ -36,13 +40,13 @@ const Battery = () => {
         variant='contained'
         size='medium'
         style={{ marginBottom: '10px' }}
-        disabled={isLoading}
+        disabled={isFetching}
         onClick={handleOpen}
-        data-testid="add-battery-button"
+        data-testid='add-battery-button'
       >
-        <AddIcon size='small' /> Add Battery
+        <AddIcon /> Add Battery
       </Button>
-      <CollapsibleTable data={data?.data} isLoading={isLoading} />
+      <CollapsibleTable data={data?.data} isLoading={isFetching} />
       <AddDialogue open={open} handleClose={handleClose} />
     </div>
   );

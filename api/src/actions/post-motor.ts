@@ -11,6 +11,7 @@ export const addMotorController = async (
       partNumber,
       serialNumber,
       dateManufactured,
+      co2,
       imageURL,
       salesPrice,
     } = req.body;
@@ -19,7 +20,7 @@ export const addMotorController = async (
     await vendiaClient.entities.motor.add({
       partNumber,
       serialNumber,
-      co2: [],
+      co2,
       dateManufactured,
       imageURL,
       salesPrice,
