@@ -35,8 +35,6 @@ const BatteryList = () => {
 
   let filteredBatteries = batteries;
   if (batteries && selectedBattery) {
-    console.log({ batteries });
-
     filteredBatteries = filteredBatteries.filter(
       (battery) => battery._id !== selectedBattery._id,
     );

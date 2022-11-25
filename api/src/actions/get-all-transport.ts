@@ -13,9 +13,7 @@ export const getAllTransportsController = async (
     const transportationMethodFilter = query.show
       ? { transportationMethod: { eq: query.show } }
       : {};
-
-    console.log(transportationMethodFilter);
-
+      
     const motorsList = await vendiaClient.entities.transportation.list({
       filter: {
         ...transportationMethodFilter,

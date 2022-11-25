@@ -17,7 +17,7 @@ const Motor = () => {
   const { data, error, isFetching } = useQuery(
     'getAllMotors',
     () => {
-      return httpGet<{ data: Array<Motor>; status: number }>({
+      return httpGet<Array<Motor>>({
         url: '/motor',
         headers: { Authorization: 'Bearer ' + user.token },
       });

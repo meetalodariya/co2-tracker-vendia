@@ -61,7 +61,7 @@ const BatteryCard: FC<Props> = ({ data }) => {
       <Grid container>
         {renderKeyValue(null, 'SN#:', data.serialNumber)}
         {renderKeyValue(null, 'Price:', data.salesPrice)}
-        {latestCo2Val && renderKeyValue(null, 'CO2 value:', latestCo2Val.value)}
+        {latestCo2Val && renderKeyValue(null, 'CO2:', latestCo2Val.value)}
       </Grid>
     </>
   );

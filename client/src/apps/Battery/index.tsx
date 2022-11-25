@@ -18,7 +18,7 @@ const Battery = () => {
   const { data, error, isFetching } = useQuery(
     'getAllBatteries',
     () => {
-      return httpGet<{ data: Array<Battery>; status: number }>({
+      return httpGet<Array<Battery>>({
         url: '/battery',
         headers: { Authorization: 'Bearer ' + user.token },
       });

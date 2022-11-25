@@ -162,8 +162,6 @@ const SeaRouteSelectionForm: FC = () => {
     ],
   );
 
-  console.log(origin, selectValue);
-
   return (
     <LoadScript
       id='script-loader-sea-routes'

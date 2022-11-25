@@ -56,9 +56,6 @@ function Row({ row }) {
           <IconButton onClick={handleOpen} data-testid={'edit-battery-button'}>
             <EditIcon />
           </IconButton>
-          <IconButton onClick={handleOpen} data-testid={'edit-battery-button'}>
-            <SignalCellularAltIcon />
-          </IconButton>
         </TableCell>
         <TableCell align='center'>
           <IconButton onClick={handleVisOpen}>
@@ -67,7 +64,11 @@ function Row({ row }) {
         </TableCell>
       </TableRow>
       <UpdateDialogue open={open} handleClose={handleClose} row={row} />
-      <Visualize open={visOpen} handleClose={handleVisClose} co2data={row?.co2}/>
+      <Visualize
+        open={visOpen}
+        handleClose={handleVisClose}
+        co2data={row?.co2}
+      />
     </>
   );
 }

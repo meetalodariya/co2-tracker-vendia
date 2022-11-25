@@ -79,7 +79,6 @@ const AddDialogue: FC<Props> = ({ open, handleClose }) => {
       };
       const test = [...formData.co2];
       test.push(rowsInput);
-      console.log(test);
       setFormData({
         ...formData,
         ['co2']: test,

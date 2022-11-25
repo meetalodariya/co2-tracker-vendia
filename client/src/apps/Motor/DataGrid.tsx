@@ -62,7 +62,11 @@ function Row({ row }) {
         </TableCell>
       </TableRow>
       <UpdateDialogue open={open} handleClose={handleClose} row={row} />
-      <Visualize open={visOpen} handleClose={handleVisClose} co2data={row?.co2}/>
+      <Visualize
+        open={visOpen}
+        handleClose={handleVisClose}
+        co2data={row?.co2}
+      />
     </>
   );
 }
