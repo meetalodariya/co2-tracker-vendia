@@ -2,6 +2,8 @@ import React, { FC, useState } from 'react';
 import { useQueryClient, useMutation } from 'react-query';
 import axios from 'axios';
 
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -11,8 +13,10 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import Button from '@mui/material/Button';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+
 import { Battery } from './types';
 import { useAuth } from '../../providers/auth';
+import Co2TableRows from './Co2TableRows';
 
 interface Props {
   open: boolean;
@@ -49,6 +53,55 @@ const UpdateDialogue: FC<Props> = ({ open, handleClose, row }) => {
     setFormData({
       ...formData,
       [name]: value,
+    });
+  };
+
+  const addCo2TableRows = () => {
+    if (formData.co2?.length) {
+      const lastRow = formData.co2[formData.co2.length - 1];
+      if (!(lastRow.value && lastRow.year)) {
+        return;
+      }
+
+      const rowsInput = {
+        value: '',
+        year: '',
+      };
+      const test = [...formData.co2];
+      test.push(rowsInput);
+      setFormData({
+        ...formData,
+        ['co2']: test,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        ['co2']: [
+          {
+            value: '',
+            year: '',
+          },
+        ],
+      });
+    }
+  };
+
+  const deleteTableRows = (index) => {
+    const rows = [...formData.co2];
+    rows.splice(index, 1);
+    setFormData({
+      ...formData,
+      ['co2']: rows,
+    });
+  };
+
+  const handleCo2Change = (index, event) => {
+    const { name, value } = event.target;
+    const rowsInput = [...formData.co2];
+    rowsInput[index][name] = value;
+    setFormData({
+      ...formData,
+      ['co2']: rowsInput,
     });
   };
 
@@ -118,6 +171,30 @@ const UpdateDialogue: FC<Props> = ({ open, handleClose, row }) => {
               />
             </LocalizationProvider>
           </div>
+          <table
+            className='table'
+            style={{ borderSpacing: '8px', borderCollapse: 'separate' }}
+          >
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>CO2 Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <Co2TableRows
+                rowsData={formData.co2}
+                deleteTableRows={(i) => deleteTableRows(i)}
+                handleCo2Change={(i, e) => handleCo2Change(i, e)}
+              />
+            </tbody>
+            <IconButton
+              onClick={addCo2TableRows}
+              data-testid={'add-battery-button'}
+            >
+              <AddIcon />
+            </IconButton>
+          </table>
         </DialogContent>
         <DialogActions>
           <Button color='warning' onClick={handleClose}>

@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "module": "commonjs",
     "target": "es5",
     "lib": ["esnext", "dom", "dom.iterable"],
@@ -19,7 +19,12 @@
       "@core/*": ["src/core/*"],
       "@assets/*": ["src/assets/*"]
     },
-    "types": ["cypress", "node"]
+    "types": [
+      "cypress",
+      "node",
+      "@4tw/cypress-drag-drop",
+      "@testing-library/cypress"
+    ]
   },
-  "include": ["**/*.ts"]
+  "include": ["**/*.tsx", "**/*.ts"]
 }

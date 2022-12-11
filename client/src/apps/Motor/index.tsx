@@ -14,12 +14,16 @@ const Motor = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const { data, error, isLoading } = useQuery('getAllMotors', () => {
-    return httpGet<{ data: Array<Motor>; status: number }>({
-      url: '/motor',
-      headers: { Authorization: 'Bearer ' + user.token },
-    });
-  });
+  const { data, error, isFetching } = useQuery(
+    'getAllMotors',
+    () => {
+      return httpGet<Array<Motor>>({
+        url: '/motor',
+        headers: { Authorization: 'Bearer ' + user.token },
+      });
+    },
+    { refetchOnWindowFocus: false },
+  );
 
   return (
     <div
@@ -35,12 +39,12 @@ const Motor = () => {
         variant='contained'
         size='medium'
         style={{ marginBottom: '10px' }}
-        disabled={isLoading}
+        disabled={isFetching}
         onClick={handleOpen}
       >
-        <AddIcon size='small' /> Add Motor
+        <AddIcon /> Add Motor
       </Button>
-      <CollapsibleTable data={data?.data} isLoading={isLoading} />
+      <CollapsibleTable data={data?.data} isLoading={isFetching} />
       <AddDialogue open={open} handleClose={handleClose} />
     </div>
   );

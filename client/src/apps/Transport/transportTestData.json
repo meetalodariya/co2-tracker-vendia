@@ -1,0 +1,158 @@
+[
+  {
+    "_id": "018454d0-0fb5-b206-2f5a-1c8b4762e541",
+    "_owner": "node-1",
+    "transportationMethod": "ship",
+    "trackingId": "eaa9982c-97ba-4b18-b650-847cd95d114f",
+    "vehicleId": "asdf",
+    "shipmentId": "asfda",
+    "imageURL": "",
+    "distance": 824824.07,
+    "co2": 123,
+    "duration": 52663,
+    "charge": 12,
+    "origin": {
+      "name": "Florida, US",
+      "lat": 26.7153,
+      "lng": -80.0534
+    },
+    "destination": {
+      "name": "Southport, North Carolina",
+      "lat": 33.914584,
+      "lng": -78.020557
+    },
+    "dateShipped": "2022-11-08",
+    "dateArrived": "2022-11-08",
+    "bill": "6150 USD"
+  },
+  {
+    "_id": "018454f9-d356-67d5-ef5f-98f787103d60",
+    "_owner": "node-1",
+    "transportationMethod": "ground",
+    "trackingId": "d356-9f13-40d1-8c29-474b4361f68b",
+    "vehicleId": "aasdfas",
+    "shipmentId": "asfdssadf",
+    "imageURL": "",
+    "distance": 558788,
+    "co2": 11,
+    "duration": 20269,
+    "charge": 12,
+    "origin": {
+      "name": "Field Kindley Memorial High School",
+      "lat": 37.03704760000001,
+      "lng": -95.63259599999999
+    },
+    "destination": {
+      "name": "AT&T Stadium",
+      "lat": 32.7472844,
+      "lng": -97.09449389999999
+    },
+    "dateShipped": "2022-11-08",
+    "dateArrived": "2022-11-08",
+    "bill": "4166 USD"
+  },
+  {
+    "_id": "018454d0-0fb5-b206-2f2a-1c8b4762e541",
+    "_owner": "node-1",
+    "transportationMethod": "ship",
+    "trackingId": "eaa9982c-97ba-4b18-018454d0-847cd95d114f",
+    "vehicleId": "asdf",
+    "shipmentId": "asfda",
+    "imageURL": "",
+    "distance": 824824.07,
+    "co2": 123,
+    "duration": 52663,
+    "charge": 12,
+    "origin": {
+      "name": "Florida, US",
+      "lat": 26.7153,
+      "lng": -80.0534
+    },
+    "destination": {
+      "name": "Southport, North Carolina",
+      "lat": 33.914584,
+      "lng": -78.020557
+    },
+    "dateShipped": "2022-11-08",
+    "dateArrived": "2022-11-08",
+    "bill": "6150 USD"
+  },
+  {
+    "_id": "018454f9-d356-67d5-e32f5f-98f787103d60",
+    "_owner": "node-1",
+    "transportationMethod": "ground",
+    "trackingId": "049152f3-d356-40d1-8c29-474b4361f68b",
+    "vehicleId": "aasdfas",
+    "shipmentId": "asfdssadf",
+    "imageURL": "",
+    "distance": 558788,
+    "co2": 11,
+    "duration": 20269,
+    "charge": 12,
+    "origin": {
+      "name": "Field Kindley Memorial High School",
+      "lat": 37.03704760000001,
+      "lng": -95.63259599999999
+    },
+    "destination": {
+      "name": "AT&T Stadium",
+      "lat": 32.7472844,
+      "lng": -97.09449389999999
+    },
+    "dateShipped": "2022-11-08",
+    "dateArrived": "2022-11-08",
+    "bill": "4166 USD"
+  },
+  {
+    "_id": "018454d0-0fb5-b21106-2f5a-1c8b4762e541",
+    "_owner": "node-1",
+    "transportationMethod": "ship",
+    "trackingId": "018454d0-97ba-4b18-b650-018454d0",
+    "vehicleId": "asdf",
+    "shipmentId": "asfda",
+    "imageURL": "",
+    "distance": 824824.07,
+    "co2": 123,
+    "duration": 52663,
+    "charge": 12,
+    "origin": {
+      "name": "Florida, US",
+      "lat": 26.7153,
+      "lng": -80.0534
+    },
+    "destination": {
+      "name": "Southport, North Carolina",
+      "lat": 33.914584,
+      "lng": -78.020557
+    },
+    "dateShipped": "2022-11-08",
+    "dateArrived": "2022-11-08",
+    "bill": "6150 USD"
+  },
+  {
+    "_id": "018454f9-d356-67d5-4ef5f-98f787103d60",
+    "_owner": "node-1",
+    "transportationMethod": "ground",
+    "trackingId": "049152f3-9f13-67d5-8c29-474b4361f68b",
+    "vehicleId": "aasdfas",
+    "shipmentId": "asfdssadf",
+    "imageURL": "",
+    "distance": 558788,
+    "co2": 11,
+    "duration": 20269,
+    "charge": 12,
+    "origin": {
+      "name": "Field Kindley Memorial High School",
+      "lat": 37.03704760000001,
+      "lng": -95.63259599999999
+    },
+    "destination": {
+      "name": "AT&T Stadium",
+      "lat": 32.7472844,
+      "lng": -97.09449389999999
+    },
+    "dateShipped": "2022-11-08",
+    "dateArrived": "2022-11-08",
+    "bill": "4166 USD"
+  }
+]

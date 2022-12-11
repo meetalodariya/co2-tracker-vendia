@@ -103,6 +103,15 @@ describe('Battery page', () => {
     cy.get('[data-testid="add-battery-partNumber-field"]').type('lkmq3245');
     cy.get('[data-testid="add-battery-imageURL-field"]').type('test');
     cy.get('[data-testid="add-battery-salesPrice-field"]').type('234');
+
+    cy.get('[data-testid="co2-year-input-0"]').type('2011');
+    cy.get('[data-testid="co2-value-input-0"]').type('41231');
+    cy.get('[data-testid="append-co2-button"]').click();
+
+    cy.get('[data-testid="co2-year-input-1"]').type('2012');
+    cy.get('[data-testid="co2-value-input-1"]').type('4234');
+    cy.get('[data-testid="delete-co2-button-0"]').click();
+
     cy.get('[data-testid="add-battery-submit-button"]').click();
 
     cy.wait('@postBatteries').then((intercept) => {
@@ -112,6 +121,7 @@ describe('Battery page', () => {
         imageURL: 'test',
         salesPrice: 234,
         dateManufactured: new Date().toISOString().split('T')[0],
+        co2: [{ year: '2012', value: '4234' }],
       });
     });
   });
@@ -136,6 +146,11 @@ describe('Battery page', () => {
     cy.get('[data-testid="update-battery-salesPrice-field"]')
       .clear()
       .type('234');
+
+    cy.get('[data-testid="co2-year-input-0"]').clear().type('2011');
+    cy.get('[data-testid="co2-value-input-0"]').clear().type('41231');
+    cy.get('[data-testid="delete-co2-button-2"]').click();
+
     cy.get('[data-testid="update-battery-submit-button"]').click();
 
     cy.wait('@putBattery').then((intercept) => {
@@ -143,9 +158,8 @@ describe('Battery page', () => {
         _id: '01842c0a-f050-341b-99ac-87aed50c411e',
         _owner: 'node-1',
         co2: [
-          { year: '2015', value: '1400' },
+          { year: '2011', value: '41231' },
           { year: '2016', value: '1100' },
-          { year: '2017', value: '900' },
         ],
         serialNumber: 'ogcmYbNn',
         partNumber: 'lkmq3245',
@@ -155,5 +169,22 @@ describe('Battery page', () => {
         dateManufactured: '2022-09-13',
       });
     });
+  });
+
+  it('should display charts', () => {
+    cy.intercept('GET', '/battery', { fixture: 'battery' });
+
+    cy.visit('/components/battery');
+
+    cy.get('[data-testid="battery-visualize-button-0"]').click();
+
+    cy.get('[data-testid="co2-bar-chart"]').should('exist');
+    cy.wait(400);
+
+    cy.get('[data-testid="chart-tab-1"]').click();
+    cy.get('[data-testid="co2-line-chart"]').should('exist');
+    cy.wait(400);
+
+    cy.get('[data-testid="visualize-close-button"]').click();
   });
 });

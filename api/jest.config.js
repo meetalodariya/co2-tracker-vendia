@@ -9,4 +9,12 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.{ts,js}', '!src/**/*.d.ts'],
   moduleDirectories: ['node_modules'],
   roots: ['./src'],
+  preset: 'ts-jest',
+  collectCoverage: true,
+  collectCoverageFrom: ['./src/actions/**'],
+  coverageThreshold: {
+    global: {
+      lines: 90,
+    },
+  },
 };

@@ -5,8 +5,9 @@ import ElectricMeterIcon from '@mui/icons-material/ElectricMeter';
 import ExtensionIcon from '@mui/icons-material/Extension';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import SettingsInputSvideoIcon from '@mui/icons-material/SettingsInputSvideo';
-
+import DocumentScannerIcon from '@mui/icons-material/DocumentScanner';
 import CssBaseline from '@mui/material/CssBaseline';
+
 import {
   Drawer,
   ListItem,
@@ -14,17 +15,27 @@ import {
   ListItemText,
   Toolbar,
   Box,
+  useMediaQuery,
+  Typography,
 } from '@mui/material';
+import theme from 'src/theme';
 
 import Nav from '../../components/Nav';
 
-const drawerWidth = 300;
+const drawerWidth = 250;
 
 const drawerData = [
   {
     name: 'HPT Details',
-    icon: <Construction />,
+    icon: <DocumentScannerIcon />,
     to: '/',
+    isActiveLink: true,
+    subMenu: [],
+  },
+  {
+    name: 'Workbench',
+    icon: <Construction />,
+    to: '/workbench',
     isActiveLink: true,
     subMenu: [],
   },
@@ -62,9 +73,19 @@ const getItem = (key, icon, name, to, isActiveLink, isCurrentPath) => (
     style={{ textDecoration: 'none', color: 'rgb(250, 249, 246)' }}
     key={key}
   >
-    <ListItem button={isActiveLink ? true : false} disabled={!isCurrentPath}>
+    <ListItem disabled={!isCurrentPath}>
       <ListItemIcon sx={{ color: 'rgb(250, 249, 246)' }}>{icon}</ListItemIcon>
-      <ListItemText primary={name} />
+      <ListItemText
+        primary={
+          <Typography
+            component={'span'}
+            variant='body2'
+            style={{ fontWeight: 550 }}
+          >
+            {name}
+          </Typography>
+        }
+      />
     </ListItem>
   </Link>
 );
@@ -106,6 +127,7 @@ const getList = (path) => (
 
 const Authenticated = () => {
   const location = useLocation();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -147,7 +169,12 @@ const Authenticated = () => {
       </Drawer>
       <Box
         component='main'
-        sx={{ flexGrow: 1, position: 'relative', zIndex: 12 }}
+        sx={{
+          flexGrow: 1,
+          position: 'relative',
+          zIndex: 12,
+          height: '100vh',
+        }}
       >
         <Toolbar />
         <Outlet />

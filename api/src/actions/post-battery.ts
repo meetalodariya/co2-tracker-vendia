@@ -13,13 +13,14 @@ export const addBatteryController = async (
       dateManufactured,
       imageURL,
       salesPrice,
+      co2,
     } = req.body;
     const { vendiaClient } = req.app.locals as { vendiaClient: VendiaClient };
 
     await vendiaClient.entities.battery.add({
       partNumber,
       serialNumber,
-      co2: [],
+      co2,
       dateManufactured,
       imageURL,
       salesPrice,

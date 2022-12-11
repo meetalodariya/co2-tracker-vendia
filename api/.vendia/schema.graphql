@@ -508,10 +508,15 @@ input Self_Motor_PartialInput_ {
 
 input Self_Transportation_ConditionInput_ {
   bill: Vendia_ModelStringInput_
+  charge: Vendia_ModelFloatInput_
   co2: Vendia_ModelFloatInput_
   dateArrived: Vendia_ModelStringInput_
   dateShipped: Vendia_ModelStringInput_
+  destination: Self_Transportation_destination_ConditionInput_
+  distance: Vendia_ModelFloatInput_
+  duration: Vendia_ModelFloatInput_
   imageURL: Vendia_ModelStringInput_
+  origin: Self_Transportation_origin_ConditionInput_
   shipmentId: Vendia_ModelStringInput_
   trackingId: Vendia_ModelStringInput_
   transportationMethod: Vendia_ModelStringInput_
@@ -524,10 +529,15 @@ input Self_Transportation_ConditionInput_ {
 input Self_Transportation_FilterInput_ {
   _owner: Vendia_ModelStringInput_
   bill: Vendia_ModelStringInput_
+  charge: Vendia_ModelFloatInput_
   co2: Vendia_ModelFloatInput_
   dateArrived: Vendia_ModelStringInput_
   dateShipped: Vendia_ModelStringInput_
+  destination: Self_Transportation_destination_FilterInput_
+  distance: Vendia_ModelFloatInput_
+  duration: Vendia_ModelFloatInput_
   imageURL: Vendia_ModelStringInput_
+  origin: Self_Transportation_origin_FilterInput_
   shipmentId: Vendia_ModelStringInput_
   trackingId: Vendia_ModelStringInput_
   transportationMethod: Vendia_ModelStringInput_
@@ -544,10 +554,15 @@ input Self_Transportation_OrderInput_ {
 type Self_Transportation {
   _id: ID!
   bill: String
+  charge: Float
   co2: Float
   dateArrived: String
   dateShipped: String
+  destination: Self_Transportation_destination
+  distance: Float
+  duration: Float
   imageURL: String
+  origin: Self_Transportation_origin
   shipmentId: String
   trackingId: String
   transportationMethod: Self_Transportation_transportationMethodEnum
@@ -559,10 +574,15 @@ type Self_Transportation {
 type Self_Transportation_Partial_ {
   _id: ID!
   bill: String
+  charge: Float
   co2: Float
   dateArrived: String
   dateShipped: String
+  destination: Self_Transportation_destination_Partial_
+  distance: Float
+  duration: Float
   imageURL: String
+  origin: Self_Transportation_origin_Partial_
   shipmentId: String
   trackingId: String
   transportationMethod: Self_Transportation_transportationMethodEnum
@@ -594,10 +614,15 @@ type Self_Transportation_Connection_ {
 
 input Self_Transportation_Input_ {
   bill: String
+  charge: Float
   co2: Float
   dateArrived: String
   dateShipped: String
+  destination: Self_Transportation_destination_Input_
+  distance: Float
+  duration: Float
   imageURL: String
+  origin: Self_Transportation_origin_Input_
   shipmentId: String
   trackingId: String
   transportationMethod: Self_Transportation_transportationMethodEnum
@@ -606,10 +631,15 @@ input Self_Transportation_Input_ {
 
 input Self_Transportation_UpdateInput_ {
   bill: String
+  charge: Float
   co2: Float
   dateArrived: String
   dateShipped: String
+  destination: Self_Transportation_destination_UpdateInput_
+  distance: Float
+  duration: Float
   imageURL: String
+  origin: Self_Transportation_origin_UpdateInput_
   shipmentId: String
   trackingId: String
   transportationMethod: Self_Transportation_transportationMethodEnum
@@ -618,10 +648,15 @@ input Self_Transportation_UpdateInput_ {
 
 input Self_Transportation_PartialInput_ {
   bill: String
+  charge: Float
   co2: Float
   dateArrived: String
   dateShipped: String
+  destination: Self_Transportation_destination_PartialInput_
+  distance: Float
+  duration: Float
   imageURL: String
+  origin: Self_Transportation_origin_PartialInput_
   shipmentId: String
   trackingId: String
   transportationMethod: Self_Transportation_transportationMethodEnum
@@ -793,6 +828,94 @@ type Self_Motor_co2_co2Item_Transaction_Result_ {
 }
 
 type Self_Motor_co2_co2Item_Delete_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+}
+
+input Self_Transportation_destination_ConditionInput_ {
+  lat: Vendia_ModelFloatInput_
+  lng: Vendia_ModelFloatInput_
+  name: Vendia_ModelStringInput_
+  _and: [Self_Transportation_destination_ConditionInput_]
+  _or: [Self_Transportation_destination_ConditionInput_]
+  _not: Self_Transportation_destination_ConditionInput_
+}
+
+input Self_Transportation_destination_FilterInput_ {
+  lat: Vendia_ModelFloatInput_
+  lng: Vendia_ModelFloatInput_
+  name: Vendia_ModelStringInput_
+  _and: [Self_Transportation_destination_FilterInput_]
+  _or: [Self_Transportation_destination_FilterInput_]
+  _not: Self_Transportation_destination_FilterInput_
+}
+
+type Self_Transportation_destination {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+type Self_Transportation_destination_Partial_ {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+type Self_Transportation_destination_Result_ {
+  error: String
+  result: Self_Transportation_destination
+}
+
+type Self_Transportation_destination_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+  result: Self_Transportation_destination
+}
+
+type Self_Transportation_destination_Delete_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+}
+
+input Self_Transportation_origin_ConditionInput_ {
+  lat: Vendia_ModelFloatInput_
+  lng: Vendia_ModelFloatInput_
+  name: Vendia_ModelStringInput_
+  _and: [Self_Transportation_origin_ConditionInput_]
+  _or: [Self_Transportation_origin_ConditionInput_]
+  _not: Self_Transportation_origin_ConditionInput_
+}
+
+input Self_Transportation_origin_FilterInput_ {
+  lat: Vendia_ModelFloatInput_
+  lng: Vendia_ModelFloatInput_
+  name: Vendia_ModelStringInput_
+  _and: [Self_Transportation_origin_FilterInput_]
+  _or: [Self_Transportation_origin_FilterInput_]
+  _not: Self_Transportation_origin_FilterInput_
+}
+
+type Self_Transportation_origin {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+type Self_Transportation_origin_Partial_ {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+type Self_Transportation_origin_Result_ {
+  error: String
+  result: Self_Transportation_origin
+}
+
+type Self_Transportation_origin_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+  result: Self_Transportation_origin
+}
+
+type Self_Transportation_origin_Delete_Transaction_Result_ {
   transaction: Vendia_Transaction!
 }
 
@@ -3346,6 +3469,42 @@ input Self_Motor_co2_co2Item_UpdateInput_ {
 input Self_Motor_co2_co2Item_PartialInput_ {
   value: String
   year: String
+}
+
+input Self_Transportation_destination_Input_ {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+input Self_Transportation_destination_UpdateInput_ {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+input Self_Transportation_destination_PartialInput_ {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+input Self_Transportation_origin_Input_ {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+input Self_Transportation_origin_UpdateInput_ {
+  lat: Float
+  lng: Float
+  name: String
+}
+
+input Self_Transportation_origin_PartialInput_ {
+  lat: Float
+  lng: Float
+  name: String
 }
 
 input Vendia_Block_transactions_transactionsItem_Input_ {

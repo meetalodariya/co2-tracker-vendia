@@ -150,9 +150,55 @@
             "description": "Image URL of transport",
             "type": "string"
           },
-          "co2": {
-            "description": "Carbon output for transportation (type * distance)",
+          "distance": {
+            "description": "Distance between origin and destination (in meters)",
             "type": "number"
+          },
+          "co2": {
+            "description": "Carbon output for transportation (grams per mile)",
+            "type": "number"
+          },
+          "duration": {
+            "description": "Duration between origin and destination (in seconds)",
+            "type": "number"
+          },
+          "charge": {
+            "description": "Charge of transport (USD per mile)",
+            "type": "number"
+          },
+          "origin": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Name of origin",
+                "type": "string"
+              },
+              "lat": {
+                "description": "Latitude of origin",
+                "type": "number"
+              },
+              "lng": {
+                "description": "Longitude of origin",
+                "type": "number"
+              }
+            }
+          },
+          "destination": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "description": "Name of destination",
+                "type": "string"
+              },
+              "lat": {
+                "description": "Latitude of destination",
+                "type": "number"
+              },
+              "lng": {
+                "description": "Longitude of destination",
+                "type": "number"
+              }
+            }
           },
           "dateShipped": {
             "description": "Date part was shipped",

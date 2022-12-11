@@ -11,11 +11,19 @@ import IconButton from '@mui/material/IconButton';
 import UpdateDialogue from './UpdateDialogue';
 import { Battery } from './types';
 import { CircularProgress } from '@mui/material';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import Visualize from './Visualize';
+import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 
-function Row({ row }) {
+function Row({ row, index }) {
   const [open, setOpen] = React.useState<boolean>(false);
+  const [visOpen, setVisOpen] = React.useState<boolean>(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleVisOpen = () => setVisOpen(true);
+  const handleVisClose = () => setVisOpen(false);
 
   return (
     <>
@@ -40,15 +48,30 @@ function Row({ row }) {
             {row.imageURL}
           </span>
         </TableCell>
-        <TableCell align='center'>{new Date(row.dateManufactured).toDateString()}</TableCell>
+        <TableCell align='center'>
+          {new Date(row.dateManufactured).toDateString()}
+        </TableCell>
         <TableCell align='center'>{row.salesPrice}</TableCell>
         <TableCell align='center'>
           <IconButton onClick={handleOpen} data-testid={'edit-battery-button'}>
             <EditIcon />
           </IconButton>
         </TableCell>
+        <TableCell align='center'>
+          <IconButton
+            onClick={handleVisOpen}
+            data-testid={`battery-visualize-button-${index}`}
+          >
+            <ShowChartIcon />
+          </IconButton>
+        </TableCell>
       </TableRow>
       <UpdateDialogue open={open} handleClose={handleClose} row={row} />
+      <Visualize
+        open={visOpen}
+        handleClose={handleVisClose}
+        co2data={row?.co2}
+      />
     </>
   );
 }
@@ -62,7 +85,7 @@ const CollapsibleTable: React.FC<Props> = ({ data, isLoading }) => {
   return (
     <TableContainer
       sx={{ width: '100%', height: '80vh', padding: '18px' }}
-      component={Paper} 
+      component={Paper}
       data-testid={'battery-update-table'}
     >
       <Table aria-label='collapsible table'>
@@ -86,6 +109,9 @@ const CollapsibleTable: React.FC<Props> = ({ data, isLoading }) => {
             </TableCell>
             <TableCell align='center'>
               <strong>Actions</strong>
+            </TableCell>
+            <TableCell align='center'>
+              <strong>Charts</strong>
             </TableCell>
           </TableRow>
         </TableHead>
@@ -113,7 +139,9 @@ const CollapsibleTable: React.FC<Props> = ({ data, isLoading }) => {
               </div>
             </div>
           ) : (
-            data.map((row) => <Row key={row._id} row={row} />)
+            data.map((row, index) => (
+              <Row key={row._id} row={row} index={index} />
+            ))
           )}
         </TableBody>
       </Table>
