@@ -92,7 +92,7 @@ const TransportDetailsDialog: FC<Props> = ({ open, handleClose, values }) => {
       <Dialog
         open={open}
         fullWidth
-        data-testid='add-battery-dialog'
+        data-testid='transport-details-dialog'
         onClose={handleClose}
       >
         <DialogTitle sx={{ m: 0, p: 2 }}>
@@ -105,6 +105,7 @@ const TransportDetailsDialog: FC<Props> = ({ open, handleClose, values }) => {
               right: 8,
               top: 8,
             }}
+            data-testid='transport-details-dialog-close'
           >
             <CloseIcon />
           </IconButton>

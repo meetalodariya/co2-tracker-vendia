@@ -78,7 +78,10 @@ const WorkbenchContainer = () => {
 
   return (
     <>
-      <div style={{ display: 'flex', height: '100%', position: 'relative' }}>
+      <div
+        style={{ display: 'flex', height: '100%', position: 'relative' }}
+        data-testid='workbench-container'
+      >
         <div style={{ width: '30%', height: '100%' }}>
           <Grid
             container
@@ -111,6 +114,7 @@ const WorkbenchContainer = () => {
                   }}
                   component='div'
                   onClick={() => switchComponentList('battery')}
+                  data-testid='battery-list-button'
                 >
                   <BootstrapTooltip title='Battery' placement='right'>
                     <ElectricMeterIcon
@@ -137,6 +141,7 @@ const WorkbenchContainer = () => {
                   }}
                   component='div'
                   onClick={() => switchComponentList('motor')}
+                  data-testid='motor-list-button'
                 >
                   <BootstrapTooltip title='Motor' placement='right'>
                     <SettingsInputSvideoIcon
@@ -163,6 +168,7 @@ const WorkbenchContainer = () => {
                   }}
                   component='div'
                   onClick={() => switchComponentList('transport')}
+                  data-testid='transport-list-button'
                 >
                   <BootstrapTooltip title='Transport' placement='right'>
                     <LocalShippingIcon
@@ -233,6 +239,7 @@ const WorkbenchContainer = () => {
               disabled={!shouldShowCreate}
               startIcon={<AddIcon fontSize='small' />}
               onClick={() => setIsFormOpen(true)}
+              data-testid='create-hpt-button'
             >
               Create
             </Button>

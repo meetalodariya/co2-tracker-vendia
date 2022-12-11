@@ -75,6 +75,7 @@ const BatteryCard: FC<Props> = ({ data }) => {
         }}
         ref={drag}
         role='Handle'
+        data-testid='battery-draggable-card'
       >
         <ComponentCard
           serialNumber={data.serialNumber}

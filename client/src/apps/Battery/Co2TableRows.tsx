@@ -20,6 +20,7 @@ function Co2TableRows({ rowsData, deleteTableRows, handleCo2Change }) {
               id='outlined-basic'
               label='Year'
               variant='outlined'
+              data-testid={`co2-year-input-${index}`}
             />
           </td>
           <td>
@@ -32,12 +33,13 @@ function Co2TableRows({ rowsData, deleteTableRows, handleCo2Change }) {
               id='outlined-basic'
               label='Value'
               variant='outlined'
+              data-testid={`co2-value-input-${index}`}
             />
           </td>
           <td>
             <IconButton
               onClick={() => deleteTableRows(index)}
-              data-testid={'edit-battery-button'}
+              data-testid={`delete-co2-button-${index}`}
             >
               <DeleteIcon />
             </IconButton>

@@ -73,6 +73,7 @@ const TransportCard: FC<Props> = ({ data }) => {
         }}
         ref={drag}
         role='Handle'
+        data-testid='transport-draggable-card'
       >
         <ComponentCard
           serialNumber={data.shipmentId}

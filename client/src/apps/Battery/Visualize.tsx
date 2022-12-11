@@ -79,6 +79,7 @@ const Visualize: FC<Props> = ({ open, handleClose, co2data }) => {
     return {
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
+      'data-testid': `chart-tab-${index}`,
     };
   }
 
@@ -127,16 +128,20 @@ const Visualize: FC<Props> = ({ open, handleClose, co2data }) => {
               <Tab label='Line chart' {...a11yProps(1)} />
             </Tabs>
           </Box>
-          <TabPanel value={value} index={0}>
+          <TabPanel value={value} index={0} data-testid={'co2-bar-chart'}>
             <Bar options={options} data={data} />;
           </TabPanel>
-          <TabPanel value={value} index={1}>
+          <TabPanel value={value} index={1} data-testid={'co2-line-chart'}>
             <Line options={options} data={data} />;
           </TabPanel>
         </Box>
 
         <DialogActions>
-          <Button color='warning' onClick={handleClose}>
+          <Button
+            color='warning'
+            onClick={handleClose}
+            data-testid={'visualize-close-button'}
+          >
             Close Visualization
           </Button>
         </DialogActions>

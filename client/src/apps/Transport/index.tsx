@@ -4,9 +4,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
+import { useQuery } from 'react-query';
 
 import AddIcon from '@mui/icons-material/Add';
-import { useQuery } from 'react-query';
 import { httpGet, httpPost } from '../../utils/axiosRequests';
 import { useAuth } from '../../providers/auth';
 import AddTransportDialogue from './AddTransportDialogue';
@@ -47,6 +47,7 @@ const Transport = () => {
         padding: '20px',
         overflow: 'hidden',
       }}
+      data-testid={'transport-container'}
     >
       <Grid container justifyContent={'space-between'} alignItems={'center'}>
         <Grid item>
@@ -56,13 +57,14 @@ const Transport = () => {
             size='medium'
             disabled={isFetching}
             onClick={handleOpen}
+            data-testid='add-transport-button'
           >
             <AddIcon /> Add Transport Route
           </Button>
         </Grid>
         <Grid item>
           <FormControl sx={{ m: 1, minWidth: 120 }} size='small'>
-            <InputLabel id='demo-select-small'>Show</InputLabel>
+            <InputLabel>Show</InputLabel>
             <Select
               labelId='demo-select-small'
               id='demo-select-small'
@@ -71,12 +73,17 @@ const Transport = () => {
               onChange={(e) => {
                 setShowFilter(e.target.value);
               }}
+              data-testid='show-filter'
             >
               <MenuItem value=''>
                 <em>All</em>
               </MenuItem>
-              <MenuItem value={'ship'}>Ship</MenuItem>
-              <MenuItem value={'ground'}>Ground</MenuItem>
+              <MenuItem value={'ship'} data-testid={'show-filter-ship'}>
+                Ship
+              </MenuItem>
+              <MenuItem value={'ground'} data-testid={'show-filter-ground'}>
+                Ground
+              </MenuItem>
             </Select>
           </FormControl>
         </Grid>

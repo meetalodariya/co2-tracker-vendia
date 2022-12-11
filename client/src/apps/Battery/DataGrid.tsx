@@ -15,7 +15,7 @@ import ShowChartIcon from '@mui/icons-material/ShowChart';
 import Visualize from './Visualize';
 import SignalCellularAltIcon from '@mui/icons-material/SignalCellularAlt';
 
-function Row({ row }) {
+function Row({ row, index }) {
   const [open, setOpen] = React.useState<boolean>(false);
   const [visOpen, setVisOpen] = React.useState<boolean>(false);
 
@@ -58,7 +58,10 @@ function Row({ row }) {
           </IconButton>
         </TableCell>
         <TableCell align='center'>
-          <IconButton onClick={handleVisOpen}>
+          <IconButton
+            onClick={handleVisOpen}
+            data-testid={`battery-visualize-button-${index}`}
+          >
             <ShowChartIcon />
           </IconButton>
         </TableCell>
@@ -136,7 +139,9 @@ const CollapsibleTable: React.FC<Props> = ({ data, isLoading }) => {
               </div>
             </div>
           ) : (
-            data.map((row) => <Row key={row._id} row={row} />)
+            data.map((row, index) => (
+              <Row key={row._id} row={row} index={index} />
+            ))
           )}
         </TableBody>
       </Table>

@@ -116,6 +116,7 @@ const BatteryBucket = () => {
       }}
       role={'Bucket'}
       ref={drop}
+      data-testid='battery-bucket'
     >
       {bucketBackground !== 'none' && (
         <div

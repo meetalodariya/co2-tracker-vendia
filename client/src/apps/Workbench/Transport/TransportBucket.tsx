@@ -122,6 +122,7 @@ const TransportBucket = () => {
       }}
       role={'Bucket'}
       ref={drop}
+      data-testid='transport-bucket'
     >
       {bucketBackground !== 'none' && (
         <div

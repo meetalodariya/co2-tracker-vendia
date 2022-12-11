@@ -16,6 +16,7 @@ import DirectionsDialog from './DirectionsDialog';
 
 interface Props {
   data: Transport;
+  index: number;
 }
 
 const renderKeyValue = (icon, key, value) => {
@@ -50,7 +51,7 @@ const renderKeyValue = (icon, key, value) => {
   );
 };
 
-const TransportCard: React.FC<Props> = ({ data }) => {
+const TransportCard: React.FC<Props> = ({ data, index }) => {
   const [open, setOpen] = React.useState<boolean>(false);
   const distanceUnit = data.transportationMethod === 'ship' ? 'nmi' : 'mi';
   const distanceInMiles = React.useMemo(
@@ -120,13 +121,19 @@ const TransportCard: React.FC<Props> = ({ data }) => {
         </Grid>
       </CardContent>
       <CardActions>
-        <Button size='small' color={'secondary'} onClick={handleOpen}>
+        <Button
+          size='small'
+          color={'secondary'}
+          onClick={handleOpen}
+          data-testid={`transport-details-button-${index}`}
+        >
           Details
         </Button>
         <Button
           size='small'
           color={'secondary'}
           onClick={handleDirectionModalOpen}
+          data-testid={`transport-directions-button-${index}`}
         >
           Directions
         </Button>

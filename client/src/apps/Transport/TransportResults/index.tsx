@@ -18,10 +18,10 @@ const TransportResults: FC<Props> = ({ data }) => {
         }}
       >
         <Grid container columnSpacing={3} rowSpacing={3}>
-          {data.map((routeData) => {
+          {data.map((routeData, index) => {
             return (
               <Grid key={routeData.trackingId} item>
-                <TransportCard data={routeData} />
+                <TransportCard data={routeData} index={index} />
               </Grid>
             );
           })}

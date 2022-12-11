@@ -15,7 +15,7 @@ interface Props {
 const AddTransportDialogue: FC<Props> = ({ open, handleClose }) => {
   return (
     <>
-      <Dialog open={open} fullWidth data-testid='add-battery-dialog'>
+      <Dialog open={open} fullWidth data-testid='add-transport-dialog'>
         <DialogTitle sx={{ m: 0, p: 2 }}>
           Add Transport Method
           <IconButton
@@ -27,6 +27,7 @@ const AddTransportDialogue: FC<Props> = ({ open, handleClose }) => {
               right: 8,
               top: 8,
             }}
+            data-testid='add-transport-dialog-close'
           >
             <CloseIcon />
           </IconButton>

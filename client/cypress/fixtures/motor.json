@@ -1,0 +1,55 @@
+[
+  {
+    "_id": "01842c0a-f050-341b-99ac-87aed50c411e",
+    "_owner": "node-1",
+    "partNumber": "test-data",
+    "serialNumber": "MTR-ogcmYbNn",
+    "imageURL": "https://i.ebayimg.com/images/g/wpAAAOSwp6tf9cJ1/s-l1600.jpg",
+    "co2": [
+      { "year": "2016", "value": "31111" },
+      { "year": "2017", "value": "3232" }
+    ],
+    "dateManufactured": "2022-09-13",
+    "costManufactured": 200,
+    "salesPrice": 208
+  },
+  {
+    "_id": "0184321a-e929-f635-1f87-b50ffe01428f",
+    "_owner": "node-1",
+    "partNumber": "part-289",
+    "serialNumber": "MTR-f34f",
+    "imageURL": "https://ae01.alicdn.com/kf/HTB1nKCLkyFTMKJjSZFAq6AkJpXax/DC-6V-200RPM-Reduction-Gearbox-Slow-Speed-Electric-Gear-Motor-with-Gearwheel-DC-Motors-Model-N20.jpg_Q90.jpg_.webp",
+    "co2": [
+      { "year": "2015", "value": "44421" },
+      { "year": "2016", "value": "24321" }
+    ],
+    "dateManufactured": "2022-10-10",
+    "costManufactured": 324,
+    "salesPrice": 42341
+  },
+  {
+    "_id": "01843467-a382-5898-9e82-64e040d876c1",
+    "_owner": "node-1",
+    "partNumber": "234jmasodifm",
+    "serialNumber": "MTR-234",
+    "imageURL": "https://www.harborfreight.com/media/catalog/product/cache/9fc4a8332f9638515cd199dd0f9238da/5/8/58208_W3.jpg",
+    "co2": [{ "year": "2017", "value": "900" }],
+    "dateManufactured": "2022-10-11",
+    "costManufactured": null,
+    "salesPrice": 18
+  },
+  {
+    "_id": "0184346d-572e-6df2-35bb-2d96c353dc11",
+    "_owner": "node-1",
+    "partNumber": "234mk",
+    "serialNumber": "MTR-Jslm",
+    "imageURL": "https://cdn.shopify.com/s/files/1/2702/9014/products/P1000131_2232_480x480.jpg?v=1662660867",
+    "co2": [
+      { "year": "2015", "value": "1400" },
+      { "year": "2017", "value": "900" }
+    ],
+    "dateManufactured": "2022-11-07",
+    "costManufactured": null,
+    "salesPrice": 7
+  }
+]

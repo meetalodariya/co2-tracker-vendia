@@ -216,7 +216,7 @@ const AddDialogue: FC<Props> = ({ open, handleClose }) => {
               </tbody>
               <IconButton
                 onClick={addCo2TableRows}
-                data-testid={'add-battery-button'}
+                data-testid={'append-co2-button'}
               >
                 <AddIcon />
               </IconButton>

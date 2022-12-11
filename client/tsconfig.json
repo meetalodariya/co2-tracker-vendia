@@ -19,7 +19,12 @@
       "@core/*": ["src/core/*"],
       "@assets/*": ["src/assets/*"]
     },
-    "types": ["cypress", "node"]
+    "types": [
+      "cypress",
+      "node",
+      "@4tw/cypress-drag-drop",
+      "@testing-library/cypress"
+    ]
   },
   "include": ["**/*.tsx", "**/*.ts"]
 }

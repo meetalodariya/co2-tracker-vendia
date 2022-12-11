@@ -93,7 +93,10 @@ const Visualize: FC<Props> = ({ open, handleClose, co2data }) => {
       },
     },
   };
-  const labels = co2data.map((x: any) => x.year); //['2018', '2019', '2020', '2021', '2022', '2023', '2024'];
+  const labels = co2data.map((x: any) => x.year);
+  labels.sort(function (a, b) {
+    return a - b;
+  });
   const obj: any = {};
   co2data.map((x: any) => {
     obj[x.year] = x.value;

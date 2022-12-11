@@ -2,6 +2,7 @@ import { Grid, Typography } from '@mui/material';
 import { getLatestCo2Value } from '@utils/co2';
 import React, { FC } from 'react';
 import { useDrag } from 'react-dnd';
+
 import { Motor } from '../../Motor/types';
 import ComponentCard from '../ComponentCard';
 import DndTypes from '../DndTypes';
@@ -75,6 +76,7 @@ const MotorCard: FC<Props> = ({ data }) => {
         }}
         ref={drag}
         role='Handle'
+        data-testid='motor-draggable-card'
       >
         <ComponentCard
           serialNumber={data.serialNumber}

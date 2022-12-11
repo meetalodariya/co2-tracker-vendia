@@ -1,5 +1,5 @@
 const { default: HttpError } = require('../../exceptions/http-error');
-const { getHptBySerialNumber } = require('../get-hpt-by-serial');
+const { getHptBySerialNumberController } = require('../get-hpt-by-serial');
 
 const vendiaHPTResponse = {
   items: [
@@ -57,7 +57,7 @@ describe('Get HPT By Serial Number controller', () => {
       json: resJsonMock,
     };
 
-    await getHptBySerialNumber(req, res, () => undefined);
+    await getHptBySerialNumberController(req, res, () => undefined);
 
     expect(listHornetPowerToolsMock.mock.calls[0][0]).toStrictEqual({
       filter: {
@@ -118,9 +118,8 @@ describe('Get HPT By Serial Number controller', () => {
     const res = {
       json: resJsonMock,
     };
-    const next = nextMock;
 
-    await getHptBySerialNumber(req, res, next);
+    await getHptBySerialNumberController(req, res, nextMock);
 
     expect(nextMock.mock.calls[0][0]).toStrictEqual(
       new HttpError('record not found', 404),

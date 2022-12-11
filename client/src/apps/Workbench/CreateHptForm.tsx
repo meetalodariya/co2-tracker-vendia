@@ -144,6 +144,7 @@ const CreateHptForm: FC<Props> = ({ open, handleClose }) => {
                   handleChange({ name: e.target.name, value: e.target.value })
                 }
                 style={{ margin: '10px' }}
+                data-testid='create-hpt-toolType-field'
               />
               <TextField
                 margin='dense'
@@ -157,6 +158,7 @@ const CreateHptForm: FC<Props> = ({ open, handleClose }) => {
                   handleChange({ name: e.target.name, value: e.target.value })
                 }
                 style={{ margin: '10px' }}
+                data-testid='create-hpt-serialNumber-field'
               />
               <TextField
                 margin='dense'
@@ -170,6 +172,7 @@ const CreateHptForm: FC<Props> = ({ open, handleClose }) => {
                   handleChange({ name: e.target.name, value: e.target.value })
                 }
                 style={{ margin: '10px' }}
+                data-testid='create-hpt-imageURL-field'
               />
             </DialogContent>
             <DialogActions>
@@ -189,6 +192,7 @@ const CreateHptForm: FC<Props> = ({ open, handleClose }) => {
                       formData.toolType
                     )
                   }
+                  data-testid='create-hpt-submit-button'
                 >
                   Submit
                 </Button>

@@ -114,6 +114,7 @@ const MotorBucket = () => {
       }}
       role={'Bucket'}
       ref={drop}
+      data-testid='motor-bucket'
     >
       {bucketBackground !== 'none' && (
         <div
